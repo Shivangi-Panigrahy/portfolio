@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Slow bounce animation for scroll-down icon */
+.animate-bounce-slow {
+  animation: bounce-slow 1.8s infinite;
+}
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(12px); }
+}
+
+/* Colorful gradient font for hero description */
+.hero-desc-creative {
+  font-family: 'Pacifico', cursive;
+  background: linear-gradient(90deg, #ff7eb3, #65d6ce, #fbbf24, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-size: 1.35rem;
+}
+
+/* Creative colorful font for navbar links */
+.navbar-link-creative {
+  font-family: 'Poppins', Arial, sans-serif;
+  color: #fff;
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
+  text-fill-color: initial;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  transition: background 0.3s, color 0.3s, -webkit-text-fill-color 0.3s;
+}
+.navbar-link-creative:hover {
+  background: linear-gradient(90deg, #fbbf24, #65d6ce, #a78bfa, #ff7eb3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  color: transparent;
+}
+
+.hero-desc-readable {
+  font-family: 'Poppins', Arial, sans-serif;
+  color: #fff;
+  font-size: 1.35rem;
+  line-height: 1.7;
+}
+.hero-keyword {
+  font-weight: bold;
+  background: linear-gradient(90deg, #fbbf24, #65d6ce, #a78bfa, #ff7eb3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+/* Hide scrollbar utility */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Webkit */
+}

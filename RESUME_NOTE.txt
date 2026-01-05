@@ -1,0 +1,15 @@
+IMPORTANT: Resume PDF Setup
+
+To enable the "Download Resume" button:
+
+1. Copy your resume PDF file named "Shivangi_Panigrahy_SDE-2_FullStack.pdf" 
+   to the following location:
+   
+   frontend/public/Shivangi_Panigrahy_SDE-2_FullStack.pdf
+
+2. The download link is already configured in the Hero component.
+
+3. After adding the file, restart your Next.js dev server if needed.
+
+The file path should be:
+frontend/public/Shivangi_Panigrahy_SDE-2_FullStack.pdf
