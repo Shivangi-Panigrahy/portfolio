@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Shivangi Panigrahy - Portfolio
 
 A modern, responsive portfolio website built with the MERN stack showcasing Shivangi Panigrahy's skills, experience, and projects.
@@ -181,3 +182,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Tailwind CSS for the utility-first approach
 - Framer Motion for smooth animations
 - Lucide for beautiful icons 
+=======
+# portfolio
+>>>>>>> b1068ebb50e5ecd63328efe5192ee3dade2ffc9f
