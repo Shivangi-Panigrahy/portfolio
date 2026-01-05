@@ -22,6 +22,8 @@ interface Project {
 const Projects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -57,17 +59,17 @@ const Projects = () => {
           description: 'A modern property search platform for finding and exploring real estate listings with advanced search and filtering capabilities.',
           technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Render'],
           imageUrl: '',
-          githubUrl: '',
+      githubUrl: '',
           liveUrl: 'https://property-search-frontend-0zxe.onrender.com/',
-          features: [
+      features: [
             'Modern and responsive property search interface',
             'Advanced filtering and search capabilities',
             'Real-time property listings',
             'User-friendly navigation and property details',
             'Deployed on Render for high availability'
-          ],
-          category: 'fullstack',
-          featured: true
+      ],
+      category: 'fullstack',
+      featured: true
         }]);
       } finally {
         setLoading(false);
@@ -76,6 +78,37 @@ const Projects = () => {
 
     fetchProjects();
   }, []);
+
+  // Check scroll position and update arrow states
+  const checkScrollability = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
+    }
+  };
+
+  // Check scrollability on mount, resize, and projects change
+  useEffect(() => {
+    checkScrollability();
+    
+    const handleResize = () => {
+      setTimeout(checkScrollability, 100);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    
+    if (scrollRef.current) {
+      scrollRef.current.addEventListener('scroll', checkScrollability);
+    }
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (scrollRef.current) {
+        scrollRef.current.removeEventListener('scroll', checkScrollability);
+      }
+    };
+  }, [projects, loading]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -154,7 +187,7 @@ const Projects = () => {
                     {/* Project image or preview */}
                     <div className="h-48 w-full flex items-center justify-center bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-indigo-500/20 rounded-t-2xl">
                       {project.imageUrl ? (
-                      <img src={project.imageUrl} alt={project.title} className="object-contain h-full w-full rounded-t-2xl" />
+                        <img src={project.imageUrl} alt={project.title} className="object-contain h-full w-full rounded-t-2xl" />
                       ) : (
                         <div className="text-center p-4">
                           <div className="text-4xl mb-2">🚀</div>
@@ -229,31 +262,37 @@ const Projects = () => {
             </div>
           </div>
           {/* Scroll Left Button */}
-          <button
-            type="button"
-            className="hidden md:flex items-center justify-center absolute left-[-32px] top-1/2 -translate-y-1/2 z-20 bg-purple-600 hover:bg-pink-500 text-white rounded-full shadow-lg w-12 h-12 transition-colors duration-300 pointer-events-auto"
-            style={{ boxShadow: '0 2px 12px 0 rgba(80,0,120,0.15)' }}
-            onClick={() => {
-              if (scrollRef.current) {
-                scrollRef.current.scrollBy({ left: -380, behavior: 'smooth' });
-              }
-            }}
-          >
-            <ChevronLeft size={32} />
-          </button>
+          {canScrollLeft && (
+            <button
+              type="button"
+              className="hidden md:flex items-center justify-center absolute left-[-32px] top-1/2 -translate-y-1/2 z-20 bg-purple-600 hover:bg-pink-500 text-white rounded-full shadow-lg w-12 h-12 transition-colors duration-300 pointer-events-auto"
+              style={{ boxShadow: '0 2px 12px 0 rgba(80,0,120,0.15)' }}
+              onClick={() => {
+                if (scrollRef.current) {
+                  scrollRef.current.scrollBy({ left: -380, behavior: 'smooth' });
+                  setTimeout(checkScrollability, 300);
+                }
+              }}
+            >
+              <ChevronLeft size={32} />
+            </button>
+          )}
           {/* Scroll Right Button */}
-          <button
-            type="button"
-            className="hidden md:flex items-center justify-center absolute right-[-32px] top-1/2 -translate-y-1/2 z-20 bg-purple-600 hover:bg-pink-500 text-white rounded-full shadow-lg w-12 h-12 transition-colors duration-300 pointer-events-auto"
-            style={{ boxShadow: '0 2px 12px 0 rgba(80,0,120,0.15)' }}
-            onClick={() => {
-              if (scrollRef.current) {
-                scrollRef.current.scrollBy({ left: 380, behavior: 'smooth' });
-              }
-            }}
-          >
-            <ChevronRight size={32} />
-          </button>
+          {canScrollRight && (
+            <button
+              type="button"
+              className="hidden md:flex items-center justify-center absolute right-[-32px] top-1/2 -translate-y-1/2 z-20 bg-purple-600 hover:bg-pink-500 text-white rounded-full shadow-lg w-12 h-12 transition-colors duration-300 pointer-events-auto"
+              style={{ boxShadow: '0 2px 12px 0 rgba(80,0,120,0.15)' }}
+              onClick={() => {
+                if (scrollRef.current) {
+                  scrollRef.current.scrollBy({ left: 380, behavior: 'smooth' });
+                  setTimeout(checkScrollability, 300);
+                }
+              }}
+            >
+              <ChevronRight size={32} />
+            </button>
+          )}
         </div>
       </div>
     </section>

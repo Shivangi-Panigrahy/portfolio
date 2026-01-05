@@ -52,7 +52,7 @@ const About = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           {/* Education Highlight */}
           <motion.div
             initial={{ opacity: 0, y: 40, boxShadow: '0 4px 6px 0 rgba(0,0,0,0.1)' }}
@@ -60,10 +60,11 @@ const About = () => {
             transition={{ delay: 0.2, duration: 0.7, type: "spring" }}
             viewport={{ once: false, amount: 0.4 }}
             whileHover={{ scale: 1.03, boxShadow: '0 4px 24px 0 rgba(168,139,250,0.15)' }}
+            className="h-full"
           >
-            <motion.div className="bg-white/10 backdrop-blur-md rounded-2xl p-8">
+            <motion.div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 h-full flex flex-col">
               <h3 className="text-2xl font-semibold text-white mb-6">Education</h3>
-              <div className="space-y-4">
+              <div className="space-y-4 flex-grow">
                 <div className="flex justify-between items-start">
                   <div>
                     <h4 className="text-white font-semibold">B.Tech Computer Science and Engineering</h4>
@@ -96,22 +97,23 @@ const About = () => {
             transition={{ delay: 0.3, duration: 0.7, type: "spring" }}
             viewport={{ once: false, amount: 0.4 }}
             whileHover={{ scale: 1.03, boxShadow: '0 4px 24px 0 rgba(244,114,182,0.15)' }}
+            className="h-full"
           >
-            <motion.div className="bg-white/10 backdrop-blur-md rounded-2xl p-8">
+            <motion.div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 h-full flex flex-col">
               <h3 className="text-2xl font-semibold text-white mb-6">Professional Experience</h3>
-              <div className="space-y-4">
+              <div className="space-y-4 flex-grow">
                 <div className="flex flex-col gap-2">
                   <div>
                     <h4 className="text-white font-semibold">Software Engineer (SDE-2) - Fullstack</h4>
                     <p className="text-gray-400">Pragetx Softwares Pvt. Ltd, Ahmedabad, India (WFO)</p>
                     <span className="text-purple-400 font-medium">04/2025 - Present (9 Months)</span>
-                    </div>
-                    <div>
+                  </div>
+                  <div>
                     <h4 className="text-white font-semibold">Junior Software Engineer – Fullstack</h4>
                     <p className="text-gray-400">BrainerHub Solutions, Ahmedabad, India (WFO)</p>
                     <span className="text-purple-400 font-medium">02/2023 – 03/2025 (2.2 Years)</span>
                   </div>
-                    </div>
+                </div>
               </div>
             </motion.div>
           </motion.div>

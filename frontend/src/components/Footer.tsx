@@ -24,7 +24,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://linkedin.com/in/Shivangi Prapti Panigrahy"
+                href="http://linkedin.com/in/shivangi-prapti-panigrahy-6408b6193"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -111,7 +111,6 @@ const Footer = () => {
             <div className="space-y-2 text-gray-300">
               <p>Ahmedabad, India</p>
               <p>shivangipanigrahy20@gmail.com</p>
-              <p>+91 7008558662</p>
             </div>
           </motion.div>
         </div>

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Shivangi Panigrahy - Portfolio
 
 A modern, responsive portfolio website built with the MERN stack showcasing Shivangi Panigrahy's skills, experience, and projects.
@@ -75,8 +74,8 @@ shivangi-portfolio/
 3. **Create environment variables**
    Create a `.env` file in the backend directory:
    ```env
-   PORT=5000
-   MONGODB_URI=mongodb://localhost:27017/shivangi-portfolio
+   PORT=8000
+   MONGODB_URI=mongodb+srv://your-connection-string
    EMAIL_USER=your-email@gmail.com
    EMAIL_PASS=your-app-password
    JWT_SECRET=your-jwt-secret-key
@@ -173,7 +172,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Shivangi Prapti Panigrahy**
 - Email: shivangipanigrahy20@gmail.com
-- LinkedIn: [Shivangi Prapti Panigrahy](https://linkedin.com/in/Shivangi Prapti Panigrahy)
+- LinkedIn: [Shivangi Prapti Panigrahy](http://linkedin.com/in/shivangi-prapti-panigrahy-6408b6193)
 - GitHub: [Shivangi-Panigrahy](https://github.com/Shivangi-Panigrahy)
 
 ## 🙏 Acknowledgments
@@ -181,7 +180,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Next.js team for the amazing framework
 - Tailwind CSS for the utility-first approach
 - Framer Motion for smooth animations
-- Lucide for beautiful icons 
-=======
-# portfolio
->>>>>>> b1068ebb50e5ecd63328efe5192ee3dade2ffc9f
+- Lucide for beautiful icons

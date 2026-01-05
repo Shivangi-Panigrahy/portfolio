@@ -144,9 +144,9 @@ const Skills = () => {
               <h3 className="text-xl font-semibold text-white mb-2 text-center">{category.title}</h3>
               <div className="flex flex-wrap justify-center gap-4 w-full">
                 {category.skills.map((skill, skillIdx) => (
-            <motion.div
+                  <motion.div
                     key={skillIdx}
-              variants={itemVariants}
+                    variants={itemVariants}
                     className="flex items-center justify-center bg-white/10 backdrop-blur-md rounded-xl px-4 py-3 gap-2 text-white text-base font-semibold shadow hover:bg-white/20 transition-all duration-300 min-w-[140px]"
                   >
                     <span className="text-2xl">{skill.icon}</span>

@@ -91,39 +91,39 @@ const Hero = () => {
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-indigo-900/20"></div>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row items-center justify-between relative z-10">
-      <motion.div
+        <motion.div
           className="text-center md:text-left flex-1"
-        variants={containerVariants}
-        initial="hidden"
+          variants={containerVariants}
+          initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.5 }}
-      >
-        <motion.div variants={itemVariants}>
+        >
+          <motion.div variants={itemVariants}>
             <motion.h1
               className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ type: "spring" as const, stiffness: 90, delay: 0.1 }}
             >
-            Hi, I&apos;m{' '}
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Shivangi Panigrahy
-            </span>
+              Hi, I&apos;m{' '}
+              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Shivangi Panigrahy
+              </span>
             </motion.h1>
-        </motion.div>
+          </motion.div>
 
-        <motion.div variants={itemVariants}>
+          <motion.div variants={itemVariants}>
             <motion.h2
-              className="text-2xl md:text-3xl lg:text-4xl text-gray-300 mb-8"
+              className="text-2xl md:text-3xl lg:text-4xl text-gray-300 mb-8 whitespace-nowrap"
               initial={{ x: -40, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ type: "spring" as const, stiffness: 80, delay: 0.3 }}
             >
-            Software Engineer (SDE-2) – Fullstack
+              Software Engineer (SDE-2) – Fullstack
             </motion.h2>
-        </motion.div>
+          </motion.div>
 
-        <motion.div variants={itemVariants}>
+          <motion.div variants={itemVariants}>
             <motion.p
               className="hero-desc-readable mb-12 max-w-3xl leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
@@ -139,54 +139,54 @@ const Hero = () => {
             >
               <span className="hero-keyword">MERN Stack Developer</span> with 2.11 years of experience in designing and developing scalable, <span className="hero-keyword">high-performance</span> web applications. Skilled in building dynamic and user-friendly solutions using React.js, Node.js, Express.js, and MongoDB. Passionate about writing clean, efficient code and staying updated with the latest advancements in web development.
             </motion.p>
-        </motion.div>
+          </motion.div>
 
-        <motion.div 
-          variants={itemVariants}
+          <motion.div 
+            variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center"
-        >
+          >
             <motion.a
-            href="#contact"
+              href="#contact"
               initial={{ boxShadow: '0 4px 6px 0 rgba(0,0,0,0.1)' }}
               whileHover={{ scale: 1.08, boxShadow: '0 4px 24px 0 rgba(168,139,250,0.25)' }}
               className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 flex items-center gap-2 shadow-lg"
-          >
-            <Mail size={20} />
-            Get In Touch
+            >
+              <Mail size={20} />
+              Get In Touch
             </motion.a>
           
             <motion.a
-            href="/Shivangi_Panigrahy_SDE-2_FullStack.pdf"
+              href="/Shivangi_Panigrahy_SDE-2_FullStack.pdf"
               initial={{ boxShadow: '0 4px 6px 0 rgba(0,0,0,0.1)' }}
               whileHover={{ scale: 1.08, boxShadow: '0 4px 24px 0 rgba(244,114,182,0.18)' }}
               className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300 flex items-center gap-2 shadow-lg"
-          >
-            <Download size={20} />
-            Download Resume
+            >
+              <Download size={20} />
+              Download Resume
             </motion.a>
-        </motion.div>
+          </motion.div>
 
-        <motion.div 
-          variants={itemVariants}
+          <motion.div 
+            variants={itemVariants}
             className="flex justify-center md:justify-start gap-6 mt-12"
-        >
-            <motion.a
-            href="https://linkedin.com/in/Shivangi-Prapti-Panigrahy"
-            target="_blank"
-            rel="noopener noreferrer"
-              whileHover={{ scale: 1.15, color: '#a78bfa' }}
-            className="text-gray-400 hover:text-white transition-colors duration-300"
           >
-            <Linkedin size={28} />
+            <motion.a
+              href="http://linkedin.com/in/shivangi-prapti-panigrahy-6408b6193"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.15, color: '#a78bfa' }}
+              className="text-gray-400 hover:text-white transition-colors duration-300"
+            >
+              <Linkedin size={28} />
             </motion.a>
             <motion.a
-            href="https://github.com/Shivangi-Panigrahy"
-            target="_blank"
-            rel="noopener noreferrer"
+              href="https://github.com/Shivangi-Panigrahy"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.15, color: '#fbbf24' }}
-            className="text-gray-400 hover:text-white transition-colors duration-300"
-          >
-            <Github size={28} />
+              className="text-gray-400 hover:text-white transition-colors duration-300"
+            >
+              <Github size={28} />
             </motion.a>
           </motion.div>
         </motion.div>
@@ -208,7 +208,7 @@ const Hero = () => {
               priority
             />
           </div>
-      </motion.div>
+        </motion.div>
       </div>
       {/* Floating Elements */}
       <div className="absolute top-20 left-10 w-20 h-20 bg-purple-500/20 rounded-full blur-xl"></div>

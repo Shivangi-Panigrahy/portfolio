@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion as m } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import { Mail, MapPin, Send, CheckCircle } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -79,12 +79,6 @@ const Contact = () => {
       href: 'mailto:shivangipanigrahy20@gmail.com'
     },
     {
-      icon: <Phone size={24} />,
-      title: 'Phone',
-      value: '+91 7008558662',
-      href: 'tel:+917008558662'
-    },
-    {
       icon: <MapPin size={24} />,
       title: 'Location',
       value: 'Ahmedabad, India',
@@ -120,18 +114,19 @@ const Contact = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
+            className="h-full"
           >
-            <m.div variants={itemVariants} className="space-y-8 bg-white/10 backdrop-blur-2xl rounded-2xl p-8 border border-purple-400/30 shadow-2xl relative overflow-hidden">
+            <m.div variants={itemVariants} className="h-full space-y-8 bg-white/10 backdrop-blur-2xl rounded-2xl p-8 pt-20 border border-purple-400/30 shadow-2xl relative overflow-hidden flex flex-col">
               {/* Decorative Animated Icon */}
               <m.div
-                initial={{ y: -10 }}
-                animate={{ y: [0, -10, 0] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-                className="absolute -top-8 left-1/2 -translate-x-1/2 z-10"
+                initial={{ y: -10, opacity: 0 }}
+                animate={{ y: [0, -10, 0], opacity: 1 }}
+                transition={{ repeat: Infinity, duration: 2, delay: 0.5 }}
+                className="absolute top-2 left-1/2 -translate-x-1/2 z-20"
               >
-                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                  <circle cx="32" cy="32" r="30" fill="url(#grad1)" opacity="0.2"/>
-                  <path d="M32 16c-8.837 0-16 6.268-16 14s7.163 14 16 14 16-6.268 16-14-7.163-14-16-14zm0 24c-5.523 0-10-4.03-10-9s4.477-9 10-9 10 4.03 10 9-4.477 9-10 9z" fill="#a78bfa"/>
+                <svg width="80" height="80" viewBox="0 0 64 64" fill="none" className="drop-shadow-2xl">
+                  <circle cx="32" cy="32" r="30" fill="url(#grad1)" opacity="0.4"/>
+                  <path d="M32 16c-8.837 0-16 6.268-16 14s7.163 14 16 14 16-6.268 16-14-7.163-14-16-14zm0 24c-5.523 0-10-4.03-10-9s4.477-9 10-9 10 4.03 10 9-4.477 9-10 9z" fill="#a78bfa" opacity="0.9"/>
                   <defs>
                     <linearGradient id="grad1" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
                       <stop stopColor="#a78bfa"/>
@@ -177,10 +172,11 @@ const Contact = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
+            className="h-full"
           >
-            <m.div variants={itemVariants}>
+            <m.div variants={itemVariants} className="h-full">
               {isSubmitted ? (
-                <div className="bg-green-500/20 backdrop-blur-md rounded-2xl p-8 border border-green-500/30">
+                <div className="h-full bg-green-500/20 backdrop-blur-md rounded-2xl p-8 border border-green-500/30 flex flex-col justify-center">
                   <div className="text-center">
                     <CheckCircle size={48} className="text-green-400 mx-auto mb-4" />
                     <h3 className="text-2xl font-semibold text-white mb-2">
@@ -198,8 +194,8 @@ const Contact = () => {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-2xl rounded-2xl p-8 border border-pink-400/30 shadow-2xl">
-                  <div className="space-y-6">
+                <form onSubmit={handleSubmit} className="h-full bg-white/10 backdrop-blur-2xl rounded-2xl p-8 border border-pink-400/30 shadow-2xl flex flex-col">
+                  <div className="space-y-6 flex-grow">
                     {/* Floating label input */}
                     <div className="relative">
                       <input
