@@ -55,7 +55,7 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Education Highlight */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 40, boxShadow: '0 4px 6px 0 rgba(0,0,0,0.1)' }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7, type: "spring" }}
             viewport={{ once: false, amount: 0.4 }}
@@ -91,7 +91,7 @@ const About = () => {
 
           {/* Experience Highlight */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 40, boxShadow: '0 4px 6px 0 rgba(0,0,0,0.1)' }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7, type: "spring" }}
             viewport={{ once: false, amount: 0.4 }}

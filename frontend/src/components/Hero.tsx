@@ -147,6 +147,7 @@ const Hero = () => {
         >
             <motion.a
             href="#contact"
+              initial={{ boxShadow: '0 4px 6px 0 rgba(0,0,0,0.1)' }}
               whileHover={{ scale: 1.08, boxShadow: '0 4px 24px 0 rgba(168,139,250,0.25)' }}
               className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 flex items-center gap-2 shadow-lg"
           >
@@ -156,6 +157,7 @@ const Hero = () => {
           
             <motion.a
             href="/Shivangi_Panigrahy_SDE-2_FullStack.pdf"
+              initial={{ boxShadow: '0 4px 6px 0 rgba(0,0,0,0.1)' }}
               whileHover={{ scale: 1.08, boxShadow: '0 4px 24px 0 rgba(244,114,182,0.18)' }}
               className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300 flex items-center gap-2 shadow-lg"
           >
@@ -201,6 +203,7 @@ const Hero = () => {
               src={profilePic}
               alt="Shivangi Panigrahy profile picture"
               fill
+              sizes="(max-width: 768px) 256px, 320px"
               style={{ objectFit: 'cover' }}
               priority
             />

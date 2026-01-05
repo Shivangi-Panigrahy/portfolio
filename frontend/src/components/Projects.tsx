@@ -24,105 +24,57 @@ const Projects = () => {
   const [loading, setLoading] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Default projects based on resume
-  const defaultProjects: Project[] = [
-    {
-      _id: '1',
-      title: 'Acuity Insights – Formative Assessment Platform (LA Model)',
-      description: 'Formative assessment platform enabling schools and organizations to conduct structured, scenario-based tests.',
-      technologies: ['Next.js', 'React', 'TypeScript', 'NestJS', 'MongoDB', 'PostgreSQL', 'Prisma', 'Material UI', 'Tailwind CSS'],
-      imageUrl: '',
-      githubUrl: '',
-      liveUrl: '',
-      features: [
-        'Worked on the Limited Availability (LA) model of a formative assessment platform used by students, schools, and organizations',
-        'Implemented backend enablement and LA-specific availability logic to support structured test scenarios',
-        'Designed PostgreSQL schemas and executed data migration from MongoDB to PostgreSQL using migration scripts and data dumps',
-        'Collaborated on UI implementation by translating Figma designs into responsive components using Material UI and Tailwind CSS',
-        'Participated in code reviews and Git-based workflows to ensure scalable and maintainable implementations'
-      ],
-      category: 'fullstack',
-      featured: true
-    },
-    {
-      _id: '2',
-      title: 'Emersion Education – AI-Based Evaluation Platform',
-      description: 'Student-facing portal for competition discovery, submission, AI-based evaluation, and result declaration.',
-      technologies: ['Next.js', 'React', 'JavaScript', 'Material Design 3', 'Stripe', 'REST APIs', 'Axios'],
-      imageUrl: '',
-      githubUrl: '',
-      liveUrl: '',
-      features: [
-        'Developed a student-facing competition portal enabling account creation, competition discovery, submissions, and result tracking',
-        'Implemented responsive UI screens using Next.js by translating Figma designs based on Material Design 3 (MD3) principles',
-        'Integrated REST APIs for registration, competition listing, submission flow, and result declaration',
-        'Implemented Stripe payment gateway with webhook handling for subscriptions, cancellations, and payment status updates',
-        'Collaborated with backend teams to align frontend requirements with Django-based APIs, ensuring smooth end-to-end workflows'
-      ],
-      category: 'fullstack',
-      featured: true
-    },
-    {
-      _id: '3',
-      title: 'Instagram DM – Private Replies Automation (SaaS Platform)',
-      description: 'SaaS automation tool enabling businesses to send Instagram private replies triggered by public comments.',
-      technologies: ['Next.js', 'Node.js', 'Hono (Bun)', 'Nx Monorepo', 'MongoDB', 'OAuth 2.0', 'Meta Graph API', 'Render'],
-      imageUrl: '',
-      githubUrl: '',
-      liveUrl: '',
-      features: [
-        'Built a SaaS automation platform to send Instagram private replies triggered by public comments using Meta\'s Messenger Platform APIs',
-        'Designed a monorepo architecture using Nx, separating frontend (Next.js) and backend (Hono) for clean scalability',
-        'Implemented OAuth 2.0 authentication, webhook subscriptions, and long-lived token management with MongoDB',
-        'Developed a keyword-based message templating engine and a full-featured admin dashboard for rules, templates, logs, and monitoring',
-        'Enabled secure deployment and production-grade reliability with logging, error handling, throttling, and environment-based secrets'
-      ],
-      category: 'fullstack',
-      featured: true
-    },
-    {
-      _id: '4',
-      title: 'MediSync Pro – Medical Management Platform',
-      description: 'Healthcare management system for centralized patient records, physician workflows, and hospital operations.',
-      technologies: ['React', 'TypeScript', 'Redux Toolkit', 'Node.js', 'Express', 'MongoDB', 'Material UI', 'Nodemailer'],
-      imageUrl: '',
-      githubUrl: '',
-      liveUrl: '',
-      features: [
-        'Developed Admin and Physician panels to manage multi-hospital patient records, physician data, and medical history',
-        'Implemented secure backend APIs using Node.js and Express to handle sensitive healthcare data and workflows',
-        'Integrated email-based consent and approval workflows using Nodemailer with automated notifications',
-        'Managed global state using Redux Toolkit, ensuring consistent UI behavior across modules',
-        'Optimized MongoDB data models and queries for efficient storage and retrieval at scale'
-      ],
-      category: 'fullstack',
-      featured: true
-    },
-    {
-      _id: '5',
-      title: 'TalentMatch Hub – Skill-Based Resource Allocation Platform',
-      description: 'Platform for aligning team skills with project requirements using real-time collaboration and analytics.',
-      technologies: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'MongoDB', 'GraphQL', 'Socket.io'],
-      imageUrl: '',
-      githubUrl: '',
-      liveUrl: '',
-      features: [
-        'Developed a full-stack platform with Admin, Core, and Match panels to manage skill-based resource allocation',
-        'Designed a multi-database architecture integrating PostgreSQL and MongoDB for structured and unstructured data synchronization',
-        'Built GraphQL APIs with complex queries and mutations for flexible data access in the Core module',
-        'Integrated Socket.io to enable real-time communication between organizations and users',
-        'Implemented authentication, access control, and role-based permissions, following clean code and review practices'
-      ],
-      category: 'fullstack',
-      featured: true
-    }
-  ];
-
   useEffect(() => {
-    // In a real app, you would fetch from your API
-    // For now, using default projects
-    setProjects(defaultProjects);
-    setLoading(false);
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+        const response = await fetch(`${apiUrl}/api/projects`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        // Ensure we have an array
+        if (Array.isArray(data)) {
+          setProjects(data);
+        } else {
+          console.warn('API returned non-array data:', data);
+          setProjects([]);
+        }
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+        // Show a single "Coming Soon" project as fallback
+        setProjects([{
+          _id: 'fallback',
+          title: 'Property Search Platform - Coming Soon',
+          description: 'A modern property search platform for finding and exploring real estate listings with advanced search and filtering capabilities.',
+          technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Render'],
+          imageUrl: '',
+          githubUrl: '',
+          liveUrl: 'https://property-search-frontend-0zxe.onrender.com/',
+          features: [
+            'Modern and responsive property search interface',
+            'Advanced filtering and search capabilities',
+            'Real-time property listings',
+            'User-friendly navigation and property details',
+            'Deployed on Render for high availability'
+          ],
+          category: 'fullstack',
+          featured: true
+        }]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
   }, []);
 
   const containerVariants = {
@@ -189,9 +141,16 @@ const Projects = () => {
                 <motion.div
                   key={project._id}
                   variants={itemVariants}
-                  className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 flex-shrink-0 w-[340px] md:w-[370px] lg:w-[400px] flex flex-col snap-center"
+                  className={`bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 flex-shrink-0 w-[340px] md:w-[370px] lg:w-[400px] flex flex-col snap-center ${project.liveUrl ? 'cursor-pointer' : ''}`}
+                  onClick={(e) => {
+                    // Only open if clicking on the card itself, not on buttons/icons
+                    const target = e.target as HTMLElement;
+                    if (project.liveUrl && !target.closest('button') && !target.closest('.z-50')) {
+                      window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
+                    }
+                  }}
                 >
-                  <div className="relative">
+                  <div className="relative" style={{ pointerEvents: 'auto' }}>
                     {/* Project image or preview */}
                     <div className="h-48 w-full flex items-center justify-center bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-indigo-500/20 rounded-t-2xl">
                       {project.imageUrl ? (
@@ -204,16 +163,50 @@ const Projects = () => {
                       )}
                     </div>
                     {/* Links overlay */}
-                    <div className="absolute top-3 right-3 flex gap-2 z-10">
+                    <div className="absolute top-3 right-3 flex gap-2 z-50" style={{ pointerEvents: 'auto' }}>
                       {project.liveUrl && (
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="bg-black/70 rounded-full p-2 hover:bg-purple-600 transition-colors">
-                          <ExternalLink size={20} className="text-white" />
-                        </a>
+                        <button
+                          type="button"
+                          className="bg-black/70 rounded-full p-2 hover:bg-purple-600 transition-colors cursor-pointer border-none outline-none relative z-50"
+                          style={{ pointerEvents: 'auto' }}
+                          onMouseDown={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                          }}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            console.log('Opening live URL:', project.liveUrl);
+                            if (project.liveUrl) {
+                              window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
+                            }
+                          }}
+                          aria-label="Open live demo"
+                        >
+                          <ExternalLink size={20} className="text-white" style={{ pointerEvents: 'none' }} />
+                        </button>
                       )}
                       {project.githubUrl && (
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="bg-black/70 rounded-full p-2 hover:bg-purple-600 transition-colors">
-                          <Github size={20} className="text-white" />
-                        </a>
+                        <button
+                          type="button"
+                          className="bg-black/70 rounded-full p-2 hover:bg-purple-600 transition-colors cursor-pointer border-none outline-none relative z-50"
+                          style={{ pointerEvents: 'auto' }}
+                          onMouseDown={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                          }}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            console.log('Opening GitHub URL:', project.githubUrl);
+                            if (project.githubUrl) {
+                              window.open(project.githubUrl, '_blank', 'noopener,noreferrer');
+                            }
+                          }}
+                          aria-label="Open GitHub repository"
+                        >
+                          <Github size={20} className="text-white" style={{ pointerEvents: 'none' }} />
+                        </button>
                       )}
                     </div>
                   </div>

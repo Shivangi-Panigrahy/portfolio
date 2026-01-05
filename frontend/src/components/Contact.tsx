@@ -48,7 +48,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/contact`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -155,6 +155,7 @@ const Contact = () => {
                     key={index}
                     href={info.href}
                     variants={itemVariants}
+                    initial={{ boxShadow: '0 4px 6px 0 rgba(0,0,0,0.1)' }}
                     whileHover={{ scale: 1.04, boxShadow: '0 4px 24px 0 rgba(168,139,250,0.15)' }}
                     className="flex items-center gap-4 p-4 bg-white/10 backdrop-blur-lg rounded-xl border border-purple-400/20 hover:bg-white/20 transition-all duration-300 shadow"
                   >
