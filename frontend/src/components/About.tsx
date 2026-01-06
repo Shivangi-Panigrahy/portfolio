@@ -17,7 +17,7 @@ const About = () => {
           }}
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6"
             initial={{ scale: 0.8, opacity: 0 }}
             whileInView={{ scale: 1.08, opacity: 1 }}
             transition={{ type: "spring", stiffness: 120, damping: 10 }}
@@ -42,7 +42,7 @@ const About = () => {
           viewport={{ once: false, amount: 0.5 }}
         >
           <motion.p
-            className="text-gray-300 text-lg md:text-xl leading-relaxed text-center"
+            className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-center px-2"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7, type: "spring" }}
@@ -52,7 +52,7 @@ const About = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-stretch">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-stretch">
           {/* Education Highlight */}
           <motion.div
             initial={{ opacity: 0, y: 40, boxShadow: '0 4px 6px 0 rgba(0,0,0,0.1)' }}
@@ -62,29 +62,29 @@ const About = () => {
             whileHover={{ scale: 1.03, boxShadow: '0 4px 24px 0 rgba(168,139,250,0.15)' }}
             className="h-full"
           >
-            <motion.div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 h-full flex flex-col">
-              <h3 className="text-2xl font-semibold text-white mb-6">Education</h3>
-              <div className="space-y-4 flex-grow">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h4 className="text-white font-semibold">B.Tech Computer Science and Engineering</h4>
-                    <p className="text-gray-400">NIST University, Berhampur, Odisha, India</p>
+            <motion.div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 md:p-8 h-full flex flex-col w-full">
+              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">Education</h3>
+              <div className="space-y-3 sm:space-y-4 flex-grow">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-4">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-white font-semibold text-sm sm:text-base mb-1">B.Tech Computer Science and Engineering</h4>
+                    <p className="text-gray-400 text-xs sm:text-sm">NIST University, Berhampur, Odisha, India</p>
                   </div>
-                  <span className="text-purple-400 font-medium">2019 - 2023</span>
+                  <span className="text-purple-400 font-medium text-xs sm:text-sm whitespace-nowrap flex-shrink-0 sm:ml-4">2019 - 2023</span>
                 </div>
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h4 className="text-white font-semibold">Intermediate</h4>
-                    <p className="text-gray-400">Kendriya Vidyalaya, Salt Lake, Kolkata, India</p>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-4">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-white font-semibold text-sm sm:text-base mb-1">Intermediate</h4>
+                    <p className="text-gray-400 text-xs sm:text-sm">Kendriya Vidyalaya, Salt Lake, Kolkata, India</p>
                   </div>
-                  <span className="text-purple-400 font-medium">2018 - 2019</span>
+                  <span className="text-purple-400 font-medium text-xs sm:text-sm whitespace-nowrap flex-shrink-0 sm:ml-4">2018 - 2019</span>
                 </div>
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h4 className="text-white font-semibold">Matriculation</h4>
-                    <p className="text-gray-400">Kendriya Vidyalaya, Salt Lake, Kolkata, India</p>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-4">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-white font-semibold text-sm sm:text-base mb-1">Matriculation</h4>
+                    <p className="text-gray-400 text-xs sm:text-sm">Kendriya Vidyalaya, Salt Lake, Kolkata, India</p>
                   </div>
-                  <span className="text-purple-400 font-medium">2016 - 2017</span>
+                  <span className="text-purple-400 font-medium text-xs sm:text-sm whitespace-nowrap flex-shrink-0 sm:ml-4">2016 - 2017</span>
                 </div>
               </div>
             </motion.div>
@@ -99,19 +99,19 @@ const About = () => {
             whileHover={{ scale: 1.03, boxShadow: '0 4px 24px 0 rgba(244,114,182,0.15)' }}
             className="h-full"
           >
-            <motion.div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 h-full flex flex-col">
-              <h3 className="text-2xl font-semibold text-white mb-6">Professional Experience</h3>
-              <div className="space-y-4 flex-grow">
-                <div className="flex flex-col gap-2">
-                  <div>
-                    <h4 className="text-white font-semibold">Software Engineer (SDE-2) - Fullstack</h4>
-                    <p className="text-gray-400">Pragetx Softwares Pvt. Ltd, Ahmedabad, India (WFO)</p>
-                    <span className="text-purple-400 font-medium">04/2025 - Present (9 Months)</span>
+            <motion.div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 md:p-8 h-full flex flex-col w-full">
+              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">Professional Experience</h3>
+              <div className="space-y-3 sm:space-y-4 flex-grow">
+                <div className="flex flex-col gap-3 sm:gap-4">
+                  <div className="space-y-1">
+                    <h4 className="text-white font-semibold text-sm sm:text-base mb-1">Software Engineer (SDE-2) - Fullstack</h4>
+                    <p className="text-gray-400 text-xs sm:text-sm mb-1">Pragetx Softwares Pvt. Ltd, Ahmedabad, India (WFO)</p>
+                    <span className="text-purple-400 font-medium text-xs sm:text-sm whitespace-nowrap block">04/2025 - Present (9 Months)</span>
                   </div>
-                  <div>
-                    <h4 className="text-white font-semibold">Junior Software Engineer – Fullstack</h4>
-                    <p className="text-gray-400">BrainerHub Solutions, Ahmedabad, India (WFO)</p>
-                    <span className="text-purple-400 font-medium">02/2023 – 03/2025 (2.2 Years)</span>
+                  <div className="space-y-1">
+                    <h4 className="text-white font-semibold text-sm sm:text-base mb-1">Junior Software Engineer – Fullstack</h4>
+                    <p className="text-gray-400 text-xs sm:text-sm mb-1">BrainerHub Solutions, Ahmedabad, India (WFO)</p>
+                    <span className="text-purple-400 font-medium text-xs sm:text-sm whitespace-nowrap block">02/2023 – 03/2025 (2.2 Years)</span>
                   </div>
                 </div>
               </div>

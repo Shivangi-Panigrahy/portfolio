@@ -99,7 +99,7 @@ const Contact = () => {
         >
           <m.h2 
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6"
           >
             Get In Touch
           </m.h2>
@@ -109,7 +109,7 @@ const Contact = () => {
           ></m.div>
         </m.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
           <m.div
             variants={containerVariants}
             initial="hidden"
@@ -117,15 +117,15 @@ const Contact = () => {
             viewport={{ once: true }}
             className="h-full"
           >
-            <m.div variants={itemVariants} className="h-full space-y-8 bg-white/10 backdrop-blur-2xl rounded-2xl p-8 pt-20 border border-purple-400/30 shadow-2xl relative overflow-hidden flex flex-col">
+            <m.div variants={itemVariants} className="h-full space-y-6 sm:space-y-8 bg-white/10 backdrop-blur-2xl rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 pt-16 sm:pt-20 border border-purple-400/30 shadow-2xl relative overflow-hidden flex flex-col w-full">
               {/* Decorative Animated Icon */}
               <m.div
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: [0, -10, 0], opacity: 1 }}
                 transition={{ repeat: Infinity, duration: 2, delay: 0.5 }}
-                className="absolute top-2 left-1/2 -translate-x-1/2 z-20"
+                className="absolute top-2 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
               >
-                <svg width="80" height="80" viewBox="0 0 64 64" fill="none" className="drop-shadow-2xl">
+                <svg width="60" height="60" viewBox="0 0 64 64" fill="none" className="sm:w-20 sm:h-20 drop-shadow-2xl">
                   <circle cx="32" cy="32" r="30" fill="url(#grad1)" opacity="0.4"/>
                   <path d="M32 16c-8.837 0-16 6.268-16 14s7.163 14 16 14 16-6.268 16-14-7.163-14-16-14zm0 24c-5.523 0-10-4.03-10-9s4.477-9 10-9 10 4.03 10 9-4.477 9-10 9z" fill="#a78bfa" opacity="0.9"/>
                   <defs>
@@ -136,16 +136,16 @@ const Contact = () => {
                   </defs>
                 </svg>
               </m.div>
-              <div>
-                <h3 className="text-2xl font-semibold text-white mb-6">
+              <div className="pt-2 sm:pt-0">
+                <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 sm:mb-4 md:mb-6">
                   Let&apos;s Connect
                 </h3>
-                <p className="text-gray-300 leading-relaxed">
+                <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
                   I&apos;m always open to discussing new opportunities, interesting projects, 
                   or just having a chat about technology. Feel free to reach out!
                 </p>
               </div>
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {contactInfo.map((info, index) => (
                   <m.a
                     key={index}
@@ -153,14 +153,14 @@ const Contact = () => {
                     variants={itemVariants}
                     initial={{ boxShadow: '0 4px 6px 0 rgba(0,0,0,0.1)' }}
                     whileHover={{ scale: 1.04, boxShadow: '0 4px 24px 0 rgba(168,139,250,0.15)' }}
-                    className="flex items-center gap-4 p-4 bg-white/10 backdrop-blur-lg rounded-xl border border-purple-400/20 hover:bg-white/20 transition-all duration-300 shadow"
+                    className="flex items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/10 backdrop-blur-lg rounded-lg sm:rounded-xl border border-purple-400/20 hover:bg-white/20 transition-all duration-300 shadow"
                   >
-                    <div className="text-purple-400">
+                    <div className="text-purple-400 flex-shrink-0 mt-0.5 sm:mt-0">
                       {info.icon}
                     </div>
-                    <div>
-                      <h4 className="text-white font-semibold">{info.title}</h4>
-                      <p className="text-gray-300">{info.value}</p>
+                    <div className="min-w-0 flex-1">
+                      <h4 className="text-white font-semibold text-sm sm:text-base mb-0.5">{info.title}</h4>
+                      <p className="text-gray-300 text-xs sm:text-sm break-words leading-relaxed">{info.value}</p>
                     </div>
                   </m.a>
                 ))}
@@ -177,26 +177,26 @@ const Contact = () => {
           >
             <m.div variants={itemVariants} className="h-full">
               {isSubmitted ? (
-                <div className="h-full bg-green-500/20 backdrop-blur-md rounded-2xl p-8 border border-green-500/30 flex flex-col justify-center">
+                <div className="h-full bg-green-500/20 backdrop-blur-md rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-green-500/30 flex flex-col justify-center">
                   <div className="text-center">
-                    <CheckCircle size={48} className="text-green-400 mx-auto mb-4" />
-                    <h3 className="text-2xl font-semibold text-white mb-2">
+                    <CheckCircle size={40} className="sm:w-12 sm:h-12 text-green-400 mx-auto mb-3 sm:mb-4" />
+                    <h3 className="text-xl sm:text-2xl font-semibold text-white mb-2">
                       Message Sent!
                     </h3>
-                    <p className="text-gray-300">
+                    <p className="text-gray-300 text-sm sm:text-base">
                       Thank you for reaching out. I&apos;ll get back to you soon!
                     </p>
                     <button
                       onClick={() => setIsSubmitted(false)}
-                      className="mt-6 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300"
+                      className="mt-4 sm:mt-6 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-5 sm:px-6 py-2 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 text-sm sm:text-base"
                     >
                       Send Another Message
                     </button>
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="h-full bg-white/10 backdrop-blur-2xl rounded-2xl p-8 border border-pink-400/30 shadow-2xl flex flex-col">
-                  <div className="space-y-6 flex-grow">
+                <form onSubmit={handleSubmit} className="h-full bg-white/10 backdrop-blur-2xl rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-pink-400/30 shadow-2xl flex flex-col">
+                  <div className="space-y-4 sm:space-y-5 md:space-y-6 flex-grow">
                     {/* Floating label input */}
                     <div className="relative">
                       <input
@@ -206,10 +206,10 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="peer w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-transparent focus:outline-none focus:border-purple-500 transition-colors duration-300"
+                        className="peer w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-transparent focus:outline-none focus:border-purple-500 transition-colors duration-300 text-sm sm:text-base"
                         placeholder="Your name"
                       />
-                      <label htmlFor="name" className="absolute left-4 top-3 text-gray-400 pointer-events-none transition-all duration-200 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-purple-400 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 bg-transparent px-1">
+                      <label htmlFor="name" className="absolute left-3 sm:left-4 top-2.5 sm:top-3 text-gray-400 pointer-events-none transition-all duration-200 peer-focus:-top-4 sm:peer-focus:-top-5 peer-focus:text-xs sm:peer-focus:text-sm peer-focus:text-purple-400 peer-placeholder-shown:top-2.5 sm:peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm sm:peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 bg-transparent px-1">
                         Name
                       </label>
                     </div>
@@ -221,10 +221,10 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="peer w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-transparent focus:outline-none focus:border-purple-500 transition-colors duration-300"
+                        className="peer w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-transparent focus:outline-none focus:border-purple-500 transition-colors duration-300 text-sm sm:text-base"
                         placeholder="your.email@example.com"
                       />
-                      <label htmlFor="email" className="absolute left-4 top-3 text-gray-400 pointer-events-none transition-all duration-200 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-purple-400 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 bg-transparent px-1">
+                      <label htmlFor="email" className="absolute left-3 sm:left-4 top-2.5 sm:top-3 text-gray-400 pointer-events-none transition-all duration-200 peer-focus:-top-4 sm:peer-focus:-top-5 peer-focus:text-xs sm:peer-focus:text-sm peer-focus:text-purple-400 peer-placeholder-shown:top-2.5 sm:peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm sm:peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 bg-transparent px-1">
                         Email
                       </label>
                     </div>
@@ -236,10 +236,10 @@ const Contact = () => {
                         value={formData.subject}
                         onChange={handleInputChange}
                         required
-                        className="peer w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-transparent focus:outline-none focus:border-purple-500 transition-colors duration-300"
+                        className="peer w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-transparent focus:outline-none focus:border-purple-500 transition-colors duration-300 text-sm sm:text-base"
                         placeholder="What's this about?"
                       />
-                      <label htmlFor="subject" className="absolute left-4 top-3 text-gray-400 pointer-events-none transition-all duration-200 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-purple-400 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 bg-transparent px-1">
+                      <label htmlFor="subject" className="absolute left-3 sm:left-4 top-2.5 sm:top-3 text-gray-400 pointer-events-none transition-all duration-200 peer-focus:-top-4 sm:peer-focus:-top-5 peer-focus:text-xs sm:peer-focus:text-sm peer-focus:text-purple-400 peer-placeholder-shown:top-2.5 sm:peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm sm:peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 bg-transparent px-1">
                         Subject
                       </label>
                     </div>
@@ -251,27 +251,27 @@ const Contact = () => {
                         onChange={handleInputChange}
                         required
                         rows={5}
-                        className="peer w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-transparent focus:outline-none focus:border-purple-500 transition-colors duration-300 resize-none"
+                        className="peer w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-transparent focus:outline-none focus:border-purple-500 transition-colors duration-300 resize-none text-sm sm:text-base"
                         placeholder="Tell me about your project or opportunity..."
                       />
-                      <label htmlFor="message" className="absolute left-4 top-3 text-gray-400 pointer-events-none transition-all duration-200 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-purple-400 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 bg-transparent px-1">
+                      <label htmlFor="message" className="absolute left-3 sm:left-4 top-2.5 sm:top-3 text-gray-400 pointer-events-none transition-all duration-200 peer-focus:-top-4 sm:peer-focus:-top-5 peer-focus:text-xs sm:peer-focus:text-sm peer-focus:text-purple-400 peer-placeholder-shown:top-2.5 sm:peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm sm:peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 bg-transparent px-1">
                         Message
                       </label>
                     </div>
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed border-2 border-transparent hover:border-pink-400 shadow-lg hover:shadow-pink-400/30"
+                      className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed border-2 border-transparent hover:border-pink-400 shadow-lg hover:shadow-pink-400/30 text-sm sm:text-base"
                       style={{ boxShadow: '0 4px 24px 0 rgba(244,114,182,0.15)' }}
                     >
                       {isSubmitting ? (
                         <>
-                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                           Sending...
                         </>
                       ) : (
                         <>
-                          <Send size={20} />
+                          <Send size={18} className="sm:w-5 sm:h-5" />
                           Send Message
                         </>
                       )}
