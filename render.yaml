@@ -19,3 +19,16 @@ services:
       - key: EMAIL_PASS
         sync: false
 
+  - type: web
+    name: shivangi-portfolio-frontend
+    env: node
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_API_URL
+        value: https://shivangipp-portfolio-backend.onrender.com
+
