@@ -60,7 +60,7 @@ const Contact = () => {
         throw new Error('Failed to send message');
       }
 
-      const data = await response.json();
+      await response.json();
       setIsSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
