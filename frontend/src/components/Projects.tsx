@@ -142,8 +142,8 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto relative">
+    <section id="projects" className="py-20 px-0 sm:px-4 md:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto relative px-4 sm:px-0">
         <motion.div
           className="text-center mb-16"
           variants={containerVariants}
@@ -153,7 +153,7 @@ const Projects = () => {
         >
           <motion.h2 
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6"
           >
             Projects.
           </motion.h2>
@@ -163,18 +163,28 @@ const Projects = () => {
           ></motion.div>
         </motion.div>
 
-        <p className="text-gray-300 text-lg max-w-3xl mx-auto mb-12 text-center">
+        <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 text-center px-4">
           Following projects showcases my skills and experience through real-world examples of my work. Each project is briefly described with links to code repositories and live demos in it. It reflects my ability to solve complex problems, work with different technologies, and manage projects effectively.
         </p>
 
-        <div className="relative w-full">
-          <div className="overflow-x-auto w-full pb-4 hide-scrollbar pointer-events-none" ref={scrollRef}>
-            <div className="flex flex-nowrap gap-8 min-w-max snap-x snap-mandatory">
+        <div className="relative w-full -mx-4 sm:mx-0">
+          <div 
+            className="overflow-x-auto w-full pb-4 scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-transparent" 
+            ref={scrollRef} 
+            style={{ 
+              WebkitOverflowScrolling: 'touch',
+              scrollBehavior: 'smooth',
+              overflowX: 'auto',
+              overflowY: 'hidden',
+              touchAction: 'pan-x'
+            }}
+          >
+            <div className="flex flex-nowrap gap-4 sm:gap-6 md:gap-8 min-w-max snap-x snap-mandatory px-4 sm:px-2 md:px-0">
               {projects.map((project) => (
                 <motion.div
                   key={project._id}
                   variants={itemVariants}
-                  className={`bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 flex-shrink-0 w-[340px] md:w-[370px] lg:w-[400px] flex flex-col snap-center ${project.liveUrl ? 'cursor-pointer' : ''}`}
+                  className={`bg-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 flex-shrink-0 w-[calc(100vw-3rem)] sm:w-[320px] md:w-[340px] lg:w-[370px] xl:w-[400px] flex flex-col snap-center ${project.liveUrl ? 'cursor-pointer' : ''}`}
                   onClick={(e) => {
                     // Only open if clicking on the card itself, not on buttons/icons
                     const target = e.target as HTMLElement;
@@ -185,22 +195,22 @@ const Projects = () => {
                 >
                   <div className="relative" style={{ pointerEvents: 'auto' }}>
                     {/* Project image or preview */}
-                    <div className="h-48 w-full flex items-center justify-center bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-indigo-500/20 rounded-t-2xl">
+                    <div className="h-40 sm:h-44 md:h-48 w-full flex items-center justify-center bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-indigo-500/20 rounded-t-xl sm:rounded-t-2xl">
                       {project.imageUrl ? (
-                      <img src={project.imageUrl} alt={project.title} className="object-contain h-full w-full rounded-t-2xl" />
+                      <img src={project.imageUrl} alt={project.title} className="object-contain h-full w-full rounded-t-xl sm:rounded-t-2xl" />
                       ) : (
-                        <div className="text-center p-4">
-                          <div className="text-4xl mb-2">🚀</div>
-                          <p className="text-white/60 text-sm font-medium">{project.title}</p>
+                        <div className="text-center p-3 sm:p-4">
+                          <div className="text-3xl sm:text-4xl mb-2">🚀</div>
+                          <p className="text-white/60 text-xs sm:text-sm font-medium">{project.title}</p>
                         </div>
                       )}
                     </div>
                     {/* Links overlay */}
-                    <div className="absolute top-3 right-3 flex gap-2 z-50" style={{ pointerEvents: 'auto' }}>
+                    <div className="absolute top-2 sm:top-3 right-2 sm:right-3 flex gap-1.5 sm:gap-2 z-50" style={{ pointerEvents: 'auto' }}>
                       {project.liveUrl && (
                         <button
                           type="button"
-                          className="bg-black/70 rounded-full p-2 hover:bg-purple-600 transition-colors cursor-pointer border-none outline-none relative z-50"
+                          className="bg-black/70 rounded-full p-1.5 sm:p-2 hover:bg-purple-600 transition-colors cursor-pointer border-none outline-none relative z-50"
                           style={{ pointerEvents: 'auto' }}
                           onMouseDown={(e) => {
                             e.preventDefault();
@@ -216,13 +226,13 @@ const Projects = () => {
                           }}
                           aria-label="Open live demo"
                         >
-                          <ExternalLink size={20} className="text-white" style={{ pointerEvents: 'none' }} />
+                          <ExternalLink size={16} className="sm:w-5 sm:h-5 text-white" style={{ pointerEvents: 'none' }} />
                         </button>
                       )}
                       {project.githubUrl && (
                         <button
                           type="button"
-                          className="bg-black/70 rounded-full p-2 hover:bg-purple-600 transition-colors cursor-pointer border-none outline-none relative z-50"
+                          className="bg-black/70 rounded-full p-1.5 sm:p-2 hover:bg-purple-600 transition-colors cursor-pointer border-none outline-none relative z-50"
                           style={{ pointerEvents: 'auto' }}
                           onMouseDown={(e) => {
                             e.preventDefault();
@@ -238,19 +248,19 @@ const Projects = () => {
                           }}
                           aria-label="Open GitHub repository"
                         >
-                          <Github size={20} className="text-white" style={{ pointerEvents: 'none' }} />
+                          <Github size={16} className="sm:w-5 sm:h-5 text-white" style={{ pointerEvents: 'none' }} />
                         </button>
                       )}
                     </div>
                   </div>
-                  <div className="flex flex-col flex-1 p-6">
-                    <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                    <p className="text-gray-300 mb-4 flex-1">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-col flex-1 p-4 sm:p-5 md:p-6">
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{project.title}</h3>
+                    <p className="text-gray-300 mb-3 sm:mb-4 flex-1 text-sm sm:text-base">{project.description}</p>
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4">
                       {project.technologies.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 px-3 py-1 rounded-full text-xs border border-purple-500/30"
+                          className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs border border-purple-500/30"
                         >
                           {tech}
                         </span>
@@ -261,15 +271,16 @@ const Projects = () => {
               ))}
             </div>
           </div>
-          {/* Scroll Left Button */}
+          {/* Scroll Left Button - Hidden on mobile, shown on desktop */}
           {canScrollLeft && (
           <button
             type="button"
-            className="hidden md:flex items-center justify-center absolute left-[-32px] top-1/2 -translate-y-1/2 z-20 bg-purple-600 hover:bg-pink-500 text-white rounded-full shadow-lg w-12 h-12 transition-colors duration-300 pointer-events-auto"
+            className="hidden lg:flex items-center justify-center absolute left-[-32px] top-1/2 -translate-y-1/2 z-20 bg-purple-600 hover:bg-pink-500 text-white rounded-full shadow-lg w-12 h-12 transition-colors duration-300 pointer-events-auto"
             style={{ boxShadow: '0 2px 12px 0 rgba(80,0,120,0.15)' }}
             onClick={() => {
               if (scrollRef.current) {
-                scrollRef.current.scrollBy({ left: -380, behavior: 'smooth' });
+                const scrollAmount = window.innerWidth < 1024 ? -350 : -380;
+                scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
                   setTimeout(checkScrollability, 300);
               }
             }}
@@ -277,15 +288,16 @@ const Projects = () => {
             <ChevronLeft size={32} />
           </button>
           )}
-          {/* Scroll Right Button */}
+          {/* Scroll Right Button - Hidden on mobile, shown on desktop */}
           {canScrollRight && (
           <button
             type="button"
-            className="hidden md:flex items-center justify-center absolute right-[-32px] top-1/2 -translate-y-1/2 z-20 bg-purple-600 hover:bg-pink-500 text-white rounded-full shadow-lg w-12 h-12 transition-colors duration-300 pointer-events-auto"
+            className="hidden lg:flex items-center justify-center absolute right-[-32px] top-1/2 -translate-y-1/2 z-20 bg-purple-600 hover:bg-pink-500 text-white rounded-full shadow-lg w-12 h-12 transition-colors duration-300 pointer-events-auto"
             style={{ boxShadow: '0 2px 12px 0 rgba(80,0,120,0.15)' }}
             onClick={() => {
               if (scrollRef.current) {
-                scrollRef.current.scrollBy({ left: 380, behavior: 'smooth' });
+                const scrollAmount = window.innerWidth < 1024 ? 350 : 380;
+                scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
                   setTimeout(checkScrollability, 300);
               }
             }}
