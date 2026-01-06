@@ -135,16 +135,30 @@ Update the following files with your information:
 
 ## 🚀 Deployment
 
-### Frontend (Vercel)
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Deploy automatically
+### Free Deployment (Recommended)
 
-### Backend (Render/Railway)
-1. Push your code to GitHub
-2. Connect your repository to your preferred platform
-3. Set environment variables
-4. Deploy
+Deploy your entire portfolio for **FREE** using Vercel (Frontend) + Render (Backend).
+
+**Quick Start**: See [QUICK_DEPLOY.md](./QUICK_DEPLOY.md) for 5-minute setup guide.
+
+**Detailed Guide**: See [DEPLOYMENT.md](./DEPLOYMENT.md) for complete instructions.
+
+### Deployment Options
+
+1. **Vercel + Render** (Recommended - Completely Free)
+   - Frontend: Vercel (optimized for Next.js)
+   - Backend: Render (free tier available)
+   - Cost: $0/month
+
+2. **Render for Both** (Single Platform)
+   - Deploy both frontend and backend on Render
+   - Cost: Free tier available
+
+3. **Vercel + Railway**
+   - Frontend: Vercel
+   - Backend: Railway ($5 credit/month)
+
+For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md).
 
 ## 📱 Features
 
