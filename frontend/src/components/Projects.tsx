@@ -30,7 +30,7 @@ const Projects = () => {
     const fetchProjects = async () => {
       try {
         setLoading(true);
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+        const apiUrl = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000').replace(/\/$/, '');
         const response = await fetch(`${apiUrl}/api/projects`, {
           method: 'GET',
           headers: {
@@ -187,7 +187,7 @@ const Projects = () => {
                     {/* Project image or preview */}
                     <div className="h-48 w-full flex items-center justify-center bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-indigo-500/20 rounded-t-2xl">
                       {project.imageUrl ? (
-                        <img src={project.imageUrl} alt={project.title} className="object-contain h-full w-full rounded-t-2xl" />
+                      <img src={project.imageUrl} alt={project.title} className="object-contain h-full w-full rounded-t-2xl" />
                       ) : (
                         <div className="text-center p-4">
                           <div className="text-4xl mb-2">🚀</div>
@@ -263,35 +263,35 @@ const Projects = () => {
           </div>
           {/* Scroll Left Button */}
           {canScrollLeft && (
-            <button
-              type="button"
-              className="hidden md:flex items-center justify-center absolute left-[-32px] top-1/2 -translate-y-1/2 z-20 bg-purple-600 hover:bg-pink-500 text-white rounded-full shadow-lg w-12 h-12 transition-colors duration-300 pointer-events-auto"
-              style={{ boxShadow: '0 2px 12px 0 rgba(80,0,120,0.15)' }}
-              onClick={() => {
-                if (scrollRef.current) {
-                  scrollRef.current.scrollBy({ left: -380, behavior: 'smooth' });
+          <button
+            type="button"
+            className="hidden md:flex items-center justify-center absolute left-[-32px] top-1/2 -translate-y-1/2 z-20 bg-purple-600 hover:bg-pink-500 text-white rounded-full shadow-lg w-12 h-12 transition-colors duration-300 pointer-events-auto"
+            style={{ boxShadow: '0 2px 12px 0 rgba(80,0,120,0.15)' }}
+            onClick={() => {
+              if (scrollRef.current) {
+                scrollRef.current.scrollBy({ left: -380, behavior: 'smooth' });
                   setTimeout(checkScrollability, 300);
-                }
-              }}
-            >
-              <ChevronLeft size={32} />
-            </button>
+              }
+            }}
+          >
+            <ChevronLeft size={32} />
+          </button>
           )}
           {/* Scroll Right Button */}
           {canScrollRight && (
-            <button
-              type="button"
-              className="hidden md:flex items-center justify-center absolute right-[-32px] top-1/2 -translate-y-1/2 z-20 bg-purple-600 hover:bg-pink-500 text-white rounded-full shadow-lg w-12 h-12 transition-colors duration-300 pointer-events-auto"
-              style={{ boxShadow: '0 2px 12px 0 rgba(80,0,120,0.15)' }}
-              onClick={() => {
-                if (scrollRef.current) {
-                  scrollRef.current.scrollBy({ left: 380, behavior: 'smooth' });
+          <button
+            type="button"
+            className="hidden md:flex items-center justify-center absolute right-[-32px] top-1/2 -translate-y-1/2 z-20 bg-purple-600 hover:bg-pink-500 text-white rounded-full shadow-lg w-12 h-12 transition-colors duration-300 pointer-events-auto"
+            style={{ boxShadow: '0 2px 12px 0 rgba(80,0,120,0.15)' }}
+            onClick={() => {
+              if (scrollRef.current) {
+                scrollRef.current.scrollBy({ left: 380, behavior: 'smooth' });
                   setTimeout(checkScrollability, 300);
-                }
-              }}
-            >
-              <ChevronRight size={32} />
-            </button>
+              }
+            }}
+          >
+            <ChevronRight size={32} />
+          </button>
           )}
         </div>
       </div>

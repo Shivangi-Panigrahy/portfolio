@@ -6,7 +6,7 @@ require('dotenv').config();
 const app = express();
 
 // Middleware - CORS configuration
-// For development, allow all origins. For production, allow Vercel domains.
+// For development, allow all origins. For production, allow frontend URLs.
 const corsOptions = {
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
@@ -17,7 +17,7 @@ const corsOptions = {
       return callback(null, true);
     }
     
-    // In production, allow main frontend URL and all Vercel preview URLs
+    // In production, allow main frontend URL and common deployment platforms
     const allowedOrigins = [];
     
     // Add main frontend URL
@@ -28,6 +28,12 @@ const corsOptions = {
     // Allow all Vercel preview URLs (for pull requests and branches)
     // Vercel URLs: *.vercel.app
     if (origin.includes('.vercel.app')) {
+      return callback(null, true);
+    }
+    
+    // Allow all Render URLs (for Render deployments)
+    // Render URLs: *.onrender.com
+    if (origin.includes('.onrender.com')) {
       return callback(null, true);
     }
     

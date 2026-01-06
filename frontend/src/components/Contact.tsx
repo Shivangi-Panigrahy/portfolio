@@ -48,7 +48,8 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/contact`, {
+      const apiUrl = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000').replace(/\/$/, '');
+      const response = await fetch(`${apiUrl}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
